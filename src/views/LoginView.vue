@@ -44,7 +44,7 @@
 import { useRouter } from 'vue-router';
 import { ref, reactive } from 'vue';
 import type { Ref } from 'vue'
-import { show } from '../services/show.ts';
+import { show } from '../services/show';
 
 
 const router = useRouter();
