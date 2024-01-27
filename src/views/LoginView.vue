@@ -75,6 +75,7 @@ const handleLogin = () => {
 <style lang="scss">
 .contain {
   // padding: 60px;
+   font-family: 'Avenir Next LT Pro';
 
   .row {
     width: 100%;
