@@ -67,7 +67,7 @@ const showPassword = () => {
 };
 
 const handleLogin = () => {
-  router.push({ name: 'dashboard' })
+  router.push({ name: 'Users' })
 }
 
 </script>

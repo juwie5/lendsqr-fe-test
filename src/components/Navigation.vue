@@ -2,12 +2,14 @@
   <section>
     <div class="navbar">
        <TopNav/>
+       <SidebarNav/>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import TopNav from './TopNav.vue';
+import SidebarNav from './SidebarNav.vue';
 
 </script>
 
