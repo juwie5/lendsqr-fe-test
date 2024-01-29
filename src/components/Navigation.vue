@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="navbar">
-       <TopNav/>
+       <!-- <TopNav/> -->
        <SidebarNav/>
     </div>
   </section>
@@ -15,12 +15,11 @@ import SidebarNav from './SidebarNav.vue';
 
 <style lang="scss" scoped>
 
-// .navbar{
+.navbar{
    
-//     height: 100%;
-//     position: fixed;
-//     overflow: scroll;
-//     padding: 12px;
-// }
+    // height: 100%;
+    position: relative;
+    // overflow: scroll;
+}
 
 </style>

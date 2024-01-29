@@ -1,11 +1,11 @@
 <template>
   <main class="home-view">
-     <Navigation/>
-      <section>
-          <RouterView/>
-      </section>
+    <div>
+      <Navigation/>
+    </div>
+    
+       <RouterView/> 
   </main>
-
 </template>
 
 
@@ -21,20 +21,11 @@ import Navigation from '../components/Navigation.vue';
   // display: flex;
   background-color: $soft-grey;
   width: 100%;
-  min-height: 100vh;
-  max-height: 100%;
-  overflow-y: auto;
+  // position: relative;
+  // min-height: 100vh;
+  // max-height: 100%;
+  overflow: auto;
 
-  section {
-    // margin-left: 208px;
-    width: 100%;
-  }
 }
 
-a.router-link-exact-active {
-  background-color: #083972fc;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-}
 </style>

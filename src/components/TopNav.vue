@@ -2,12 +2,10 @@
     <section>
         <div>
             <div class="top-nav">
-                <div>
-                    <img src="@/assets/logo.svg" alt="">
-                </div>
+              
                 <div class="search">
-                    <input class="top-nav-input" type="text" name="" id="" placeholder="Search for anything">  
-                    <img class="searchButton" src="@/assets/search.svg" alt="">  
+                    <input class="top-nav-input" type="text" name="" id="" placeholder="Search for anything">
+                    <img class="searchButton" src="@/assets/search.svg" alt="">
                 </div>
                 <div class="top-nav-end">
                     <a href="">Docs</a>
@@ -44,9 +42,9 @@
     .top-nav-img {
         width: 13%;
     }
-    .search{
+
+    .search {
         position: relative;
-      
     }
 
     .top-nav-input {
