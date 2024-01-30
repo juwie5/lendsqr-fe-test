@@ -6,7 +6,7 @@
             <div class="user-card-grid">
                 <div v-for="user in userStats">
                     <div class="user-card">
-                        <img :src="`/src/assets/${user.image}`" alt="">
+                        <img :src="`../src/assets/${user.image}`" alt="">
                         <p class="user-card-header">{{ user.name }}</p>
                         <h4>{{ user.amount }}</h4>
                     </div>
