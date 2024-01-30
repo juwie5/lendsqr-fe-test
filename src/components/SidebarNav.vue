@@ -556,6 +556,7 @@ a {
     padding-bottom: 100px;
 }
 
+
 a.router-link-exact-active {
     background-color: rgb(57, 205, 204, 0.2);
     border-left: 3px solid #39CDCC;

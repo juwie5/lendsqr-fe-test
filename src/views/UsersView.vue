@@ -45,7 +45,7 @@
                                 </button>
                                 <template #popper>
                                     <div class="dropdown">
-                                        <div class="dropdown-item">
+                                        <div class="dropdown-item" @click="pageNavigate(item)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 16 16" fill="none">
                                                 <path
@@ -143,24 +143,27 @@ let tableHeader = [
 ];
 
 let tableData = [
-    { organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Inactive" },
-    { organization: "Irorun", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Pending" },
-    { organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
-    { organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
-    { organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
-    { organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Pending" },
-    { organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
-    { organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
-    { organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Active" },
-    { organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
+    { id: 1, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Inactive" },
+    { id: 2, organization: "Irorun", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Pending" },
+    { id: 3, organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
+    { id: 4, organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
+    { id: 5, organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
+    { id: 6, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Pending" },
+    { id: 7, organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
+    { id: 8, organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
+    { id: 9, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Active" },
+    { id: 10, organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
 
 ];
 
+const pageNavigate = (item: any) => {
+    router.push({path: `/user/${item.id}`})
+}
 
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 .users-page {
     padding: 0 0 0 295px;
 
@@ -230,6 +233,7 @@ let tableData = [
         display: flex;
         align-items: center;
         gap: 4px;
+        cursor: pointer;
     }
 }
 </style>
