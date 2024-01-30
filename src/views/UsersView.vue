@@ -3,16 +3,29 @@
         <TopNav/>
         <div class="users-container">
             <h3>Users</h3>
-            <div class="user-card-grid">
-                <div v-for="user in userStats">
+            <div class="user-card-grid">               
                     <div class="user-card">
-                        <img :src="`../src/assets/${user.image}`" alt="">
-                        <p class="user-card-header">{{ user.name }}</p>
-                        <h4>{{ user.amount }}</h4>
+                        <img src="@/assets/user-card.svg" alt="">
+                        <p class="user-card-header">Users</p>
+                        <h4>2,453</h4>
                     </div>
-                </div>
+                    <div class="user-card">
+                        <img src="@/assets/user-active.svg" alt="">
+                        <p class="user-card-header">Active Users</p>
+                        <h4>2,453</h4>
+                    </div>
+                    <div class="user-card">
+                        <img src="@/assets/user-loan.svg" alt="">
+                        <p class="user-card-header">Users with Loans</p>
+                        <h4>12,453</h4>
+                    </div>
+                    <div class="user-card">
+                        <img src="@/assets/user-savings.svg" alt="">
+                        <p class="user-card-header">Users with Savings</p>
+                        <h4>102,453</h4>
+                    </div>       
             </div>
-            <AppTable :header="tableHeader" :fields="tableData">
+            <AppTable :header="tableHeader" :fields="resultArray" :total-records="resultArray.length">
                 <template #header-action="header">
                     <p class="hide"></p>
                 </template>
@@ -23,6 +36,9 @@
                     <div v-if="item.status === 'Pending'" class="status status-pending">{{ item.status }}</div>
                     <div v-if="item.status === 'Blacklisted'" class="status status-blacklisted">{{ item.status }}</div>
 
+                </template>
+                <template #item-date="item">
+                    {{ format(new Date(item.date), 'MMM, dd hh:mm:ss aa') }}
                 </template>
                 <template #item-action="item">
                     <div>
@@ -97,19 +113,12 @@
 <script setup lang="ts">
 import TopNav from '@/components/TopNav.vue';
 import AppTable from '@/components/AppTable.vue'
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import { ref, reactive } from 'vue';
-
+import { resultArray } from '../services/data'
 
 const router = useRouter();
-
-let userStats: { image: string, name: string, amount: string }[] = [
-    { image: "user-card.svg", name: "Users", amount: "2,453" },
-    { image: "user-active.svg", name: "Active Users", amount: "2,453" },
-    { image: "user-loan.svg", name: "Users with Loans", amount: "12,453" },
-    { image: "user-savings.svg", name: "Users with Savings", amount: "102,453" },
-];
-
 
 let tableHeader = [
     {
@@ -142,98 +151,14 @@ let tableHeader = [
     }
 ];
 
-let tableData = [
-    { id: 1, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Inactive" },
-    { id: 2, organization: "Irorun", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Pending" },
-    { id: 3, organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
-    { id: 4, organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
-    { id: 5, organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
-    { id: 6, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Pending" },
-    { id: 7, organization: "lendstar", username: "Grace Effiom", email: "grace@lendstar.com", phone: "07060780922", date: "2023-12-20", status: "Blacklisted" },
-    { id: 8, organization: "lendsqr", username: "Debby Ogana", email: "debby2@irorun.com", phone: "08160780928", date: "2023-12-20", status: "Active" },
-    { id: 9, organization: "lendsqr", username: "Adedeji", email: "adedeji@lendsqr.com", phone: "08078903721", date: "2023-12-20", status: "Active" },
-    { id: 10, organization: "lendsqr", username: "Tosin Dokunmu", email: "tosin@lendsqr.com", phone: "07003309226", date: "2023-12-20", status: "Active" },
-
-];
-
 const pageNavigate = (item: any) => {
-    router.push({path: `/user/${item.id}`})
+    router.push({path: `/user/${item.id}`});
+    localStorage.setItem("user", JSON.stringify(item));
 }
 
 
 </script>
 
 <style scoped lang="scss" >
-.users-page {
-    padding: 0 0 0 295px;
 
-}
-
-.users-container {
-    padding: 0 60px;
-
-    h3 {
-        color: $blue;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
-
-    .user-card-grid {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        gap: 10px;
-    }
-
-    .user-card {
-        width: 195px;
-        height: 160px;
-        border-radius: 4px;
-        border: 1px solid rgba(33, 63, 125, 0.06);
-        background: #FFF;
-        box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
-        padding: 20px 30px;
-
-        p {
-            color: $grey;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            text-transform: uppercase;
-            margin: 14px 0;
-        }
-
-        h4 {
-            color: $blue;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            text-transform: uppercase;
-            margin: 0;
-        }
-    }
-}
-
-.dropdown {
-    background: $white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: $grey;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    .dropdown-item{
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        cursor: pointer;
-    }
-}
 </style>

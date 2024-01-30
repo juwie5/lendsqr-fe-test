@@ -25,7 +25,7 @@
                         <img src="@/assets/user-avatar.svg" alt="">
                     </div>
                     <div class="section-item">
-                        <h5>Grace Effiom</h5>
+                        <h5>{{ user.username }}</h5>
                         <p>LSQFf587g90</p>
                     </div>
                     <div class="section-item bar">
@@ -57,15 +57,15 @@
                     <div class="section-two-grid">
                         <div class="section-two-grid-item">
                             <p>full Name</p>
-                            <h6>Grace Effiom</h6>
+                            <h6>{{ user.username }}</h6>
                         </div>
                         <div class="section-two-grid-item">
                             <p>Phone Number</p>
-                            <h6>07060780922</h6>
+                            <h6>{{ user.phone }}</h6>
                         </div>
                         <div class="section-two-grid-item">
                             <p>Email Address</p>
-                            <h6>grace@gmail.com</h6>
+                            <h6>{{ user.email }}</h6>
                         </div>
                         <div class="section-two-grid-item">
                             <p>Bvn</p>
@@ -192,6 +192,10 @@
 <script setup lang="ts">
 import TopNav from '@/components/TopNav.vue';
 
+import {ref} from 'vue';
+
+const user = ref< object | null>(JSON.parse(localStorage.getItem("user")))
+
 </script>
 
 <style lang="scss" scoped>
@@ -200,195 +204,4 @@ a.router-link-active {
     border-left: 3px solid #39CDCC;
 }
 
-.users-page {
-    padding: 0 0 0 295px;
-    margin-bottom: 40px;
-
-}
-
-a {
-    text-decoration: none;
-    color: #545F7D;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.users-container {
-    padding: 0 60px;
-
-    h3 {
-        color: $blue;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
-
-    .page-heading {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-    }
-
-    .page-sub-heading {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .blacklist-btn {
-            width: 170px;
-            height: 40px;
-            border-radius: 8px;
-            border: 1px solid #E4033B;
-            background-color: transparent;
-            color: #E4033B;
-            text-align: center;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-            margin-right: 12px;
-        }
-
-        .active-btn {
-            width: 170px;
-            height: 40px;
-            border-radius: 8px;
-            border: 1px solid $lime-green;
-            background-color: transparent;
-            color: $lime-green;
-            text-align: center;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-        }
-    }
-
-    .bar {
-        border-right: 1px solid rgb(84, 95, 125, 0.09);
-        border-left: 1px solid rgb(84, 95, 125, 0.09);
-        height: 60%;
-    }
-
-    .section {
-        background: $white;
-    }
-
-    .section-one {
-        display: flex;
-        align-items: start;
-        background: $white;
-        padding: 30px;
-        gap: 20px;
-
-        .section-item {
-            padding: 19px 30px;
-
-            h5 {
-                color: $blue;
-                font-size: 22px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-                margin: 0;
-            }
-
-            h6 {
-                color: $grey;
-                font-family: "Work Sans";
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-                margin: 8px 0;
-            }
-
-        }
-    }
-
-    .section-tabs {
-        display: flex;
-        justify-content: space-evenly;
-
-        p {
-            color: rgba(0, 0, 0, 0.80);
-            text-align: center;
-            font-family: "SF Compact Text";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
-
-        .active {
-            font-family: "Work Sans";
-            color: $lime-green;
-            padding: 0 20px 20px 20px;
-            border-bottom: 2px solid $lime-green;
-        }
-    }
-
-    .section-two {
-        padding: 30px;
-        background: $white;
-        margin-top: 30px;
-
-        h3 {
-            color: $blue;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-        }
-
-        .section-two-grid {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-        }
-
-        .section-two-grid:nth-child(2){
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-        }
-
-        .section-two-border{
-            border-bottom: 1px solid rgb(33, 63, 125, 0.06);
-        }
-        .section-two-border:nth-child(5){
-            border: none;
-        }
-
-
-        .section-two-grid-item {
-            color: $grey;
-            p {
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                text-transform: uppercase;
-            }
-
-            h6 {
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-                margin: 0;
-            }
-        }
-    }
-}
 </style>

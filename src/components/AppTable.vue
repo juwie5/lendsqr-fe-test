@@ -106,7 +106,7 @@
                     <option :value="250">250</option>
                     <option :value="500">500</option>
                 </select>
-                <p>out of {{ pageSize }}</p>
+                <p>out of {{ totalRecords }}</p>
             </div>
 
             <div class="pag-item">
@@ -143,7 +143,6 @@ const slots = useSlots();
 const props = defineProps({
     header: Array,
     fields: Array,
-    totalPages: Number,
     totalRecords: Number
 })
 
@@ -153,6 +152,10 @@ const emit = defineEmits([
     'pageChange'
 ]);
 
+
+const totalPages = computed (() => {
+    return props.totalRecords / pageSize.value
+})
 
 const updatePageSize = () => {
     emit('pageSizeChange', pageSize.value)

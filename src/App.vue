@@ -8,6 +8,8 @@ import { RouterView } from 'vue-router'
 
 <style lang="scss">
  @import "styles/variable";
- @import "styles/login"
+ @import "styles/login";
+ @import "styles/users";
+ @import "styles/userid";
 
 </style>
